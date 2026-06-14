@@ -10,16 +10,20 @@ class GifApp(tk.Tk):
         super().__init__()
 
         self.title("Gif Converter App!")
-        self.geometry("800x850")
+        self.geometry("800x875")
 
         self.video_path = ''
         self.output_path = ''
         self.frames = []
         self.preview_frame_index = 0
 
+        # title label:
+        self.label_title = tk.Label(self, text="GIF Converter App!", font=("bold", 20))
+        self.label_title.pack(pady=0.5)
+
         # select video button:
         self.select_video_button = tk.Button(self, text="Select Video", command=self.select_video)
-        self.select_video_button.pack(pady=10)
+        self.select_video_button.pack(pady=5)
 
         # preview label
         self.preview_label = tk.Label(self, text="Video Preview")
@@ -45,16 +49,16 @@ class GifApp(tk.Tk):
         # scale entry
         self.scale_entry = tk.Entry(self)
         self.scale_entry.pack()
-        self.scale_entry.insert(0, "10")
+        self.scale_entry.insert(0, "0.5")
 
         # export button
         self.export_button = tk.Button(self, text="Export GIF", command=self.export_gif)
-        self.export_button.pack(pady=20)
+        self.export_button.pack(pady=5)
 
         # progress bar
         self.progress = ttk.Progressbar(self, orient=tk.HORIZONTAL, length=100, 
                                         mode="indeterminate")
-        self.progress.pack(pady=20)
+        self.progress.pack(pady=5)
 
     def select_video(self):
         """Selects a video to use from files."""
